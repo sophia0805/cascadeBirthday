@@ -1,0 +1,316 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/*present */
+input#click {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Sofia", sans-serif;
+    background-color: white;
+    margin: 0;
+}
+
+.name {
+    font-family: "Arya", sans-serif;
+    opacity: 0;
+    transform: translate(2.5rem, -15rem);
+    font-size: 100px;
+
+}
+.present-container {
+    position: relative;
+}
+
+.present {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    background-color: rgb(145, 86, 187);
+    transform: translateX(-150px) translateY(725px);
+}
+
+/* Vertical ribbon - enhanced */
+.present::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 250px;
+    background-color: #FF7B89;
+    left: 42%;
+}
+
+/* Horizontal ribbon */
+.present::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    background-color: #FF7B89;
+    top: 40%;
+    left: 0;
+}
+
+/* Fancy bow */
+.click::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background-color: #FF7B89;
+    left: 45%;
+    box-shadow: inset 0 0 0 5px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Left bow loop */
+.click::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #FF7B89;
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(-45deg);
+    left: 30%;
+    top: -30px;
+    box-shadow: inset 0 0 0 5px rgba(0,0,0,0.2);
+    z-index: 0.1;
+}
+
+
+.click {
+    position: absolute;
+    background-color: rgb(85, 46, 112);
+    width: 320px;
+    height: 60px;
+    top: -60px;
+    left: -10px;
+    transform-origin: bottom left;
+    transition: 0.5s;
+    cursor: pointer;
+    
+}
+
+/* Right bow loop */
+.click::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #FF7B89;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    left: 50%;
+    top: -30px;
+    
+}
+
+/* Bow center knot */
+.click .knot {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background-color: #791620;
+    border-radius: 15%;
+    left: 47%;
+    top: -10px;
+    z-index: 1;
+}
+
+/* Ribbon tails */
+.click .ribbon-tail-left {
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    background-color: #FF7B89;
+    left: 49%;
+    top: -5px;
+    transform: rotate(-35deg);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    box-shadow: inset 0 0 0 5px rgba(0,0,0,0.2);
+}
+
+.click .ribbon-tail-right {
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    background-color: #FF7B89;
+    left: 38%;
+    top: -5px;
+    transform: rotate(35deg);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    
+}
+
+/* Rest of your existing CSS remains the same */
+#click:checked + .click {
+    transform: rotate(-110deg);
+}
+
+/* balloons */
+.balloons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-40px) translateY(-60px);
+    position: relative;
+    transform-origin: center;
+    scale: 0;
+}
+
+#click:checked ~ .balloons {
+    scale: 1;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+#click:checked ~ .name {
+    animation: fadeIn 5s 2s;
+}
+.balloon1, .balloon2, .balloon3, .balloon4, .balloon5 {
+    position: absolute;
+    top: -15px;
+    left: 40px;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px 220px 100px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 10em;
+    rotate: 225deg;
+    opacity: 0.9;
+}
+
+.balloon1 span, .balloon2 span, .balloon3 span, .balloon4 span, .balloon5 span {
+    display: inline-block;
+    transform: rotate(135deg);
+}
+
+.balloon1::before, .balloon2::before, .balloon3::before, .balloon4::before, .balloon5::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -11px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid;
+    transform: rotate(135deg);
+}
+
+/* Balloon colors */
+.balloon1 {
+    background-color: #FF7B89;
+    margin: 40px -50px 0 0;
+}
+
+.balloon2 {
+    background-color: #8A5082;
+    margin: 40px -50px 0 0;
+}
+
+.balloon3 {
+    background-color: #6F5F90;
+    margin: 40px -60px 0 0;
+}
+
+.balloon4 {
+    background-color: #758EB7;
+    margin: 40px -50px 0 0;
+}
+
+.balloon5 {
+    background-color: #A5CAD2;
+    margin: 40px -120px 0 0;
+}
+
+/* Triangle colors */
+.balloon1::before { border-bottom-color: #da5b67; }
+.balloon2::before { border-bottom-color: #6b3764; }
+.balloon3::before { border-bottom-color: #564775; }
+.balloon4::before { border-bottom-color: #556c91; }
+.balloon5::before { border-bottom-color: #7aa4ad; }
+
+/* Animation keyframes for initial position */
+@keyframes ballooning1 {
+    100% { transform: translate(805px, 115px) rotate(-30deg); }
+}
+@keyframes ballooning2 {
+    100% { transform: translate(603.75px, 316.25px) rotate(-20deg); }
+}
+@keyframes ballooning3 {
+    100% { transform: translate(414px, 460px) rotate(-15deg); }
+}
+@keyframes ballooning4 {
+    100% { transform: translate(287.5px, 632.5px) rotate(-10deg); }
+}
+@keyframes ballooning5 {
+    100% { transform: translate(115px, 805px) rotate(30deg); }
+}
+
+/* Floating animations */
+@keyframes float1 {
+    0%, 100% { transform: translate(805px, 115px) rotate(-30deg); }
+    50% { transform: translate(785px, 95px) rotate(15deg); }
+}
+@keyframes float2 {
+    0%, 100% { transform: translate(603.75px, 316.25px) rotate(-20deg); }
+    50% { transform: translate(613.75px, 306.25px) rotate(15deg); }
+}
+@keyframes float3 {
+    0%, 100% { transform: translate(414px, 460px) rotate(-15deg); }
+    50% { transform: translate(424px, 450px) rotate(25deg); }
+}
+@keyframes float4 {
+    0%, 100% { transform: translate(287.5px, 632.5px) rotate(-10deg); }
+    50% { transform: translate(297.5px, 622.5px) rotate(15deg); }
+}
+@keyframes float5 {
+    0%, 100% { transform: translate(115px, 805px) rotate(30deg); }
+    50% { transform: translate(105px, 795px) rotate(-30deg); }
+}
+
+/* Animation triggers with floating */
+#click:checked ~ .balloons .balloon1 {
+    animation: 
+        ballooning1 3s forwards ease-in-out,
+        float1 4s ease-in-out infinite 3s;
+}
+#click:checked ~ .balloons .balloon2 {
+    animation: 
+        ballooning2 3s forwards ease-in-out,
+        float2 3s ease-in-out infinite 3s;
+}
+#click:checked ~ .balloons .balloon3 {
+    animation: 
+        ballooning3 3s forwards ease-in-out,
+        float3 4s ease-in-out infinite 3s;
+}
+#click:checked ~ .balloons .balloon4 {
+    animation: 
+        ballooning4 3s forwards ease-in-out,
+        float4 2s ease-in-out infinite 3s;
+}
+#click:checked ~ .balloons .balloon5 {
+    animation: 
+        ballooning5 3s forwards ease-in-out,
+        float5 7s ease-in-out infinite 3s;
+}
